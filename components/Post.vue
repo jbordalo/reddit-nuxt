@@ -1,8 +1,8 @@
 <template>
     <div>
         <b-card
-            :title="title"
-            :img-src="image"
+            :title="author + ' wrote ' + title"
+            :img-src="url"
             img-alt="Image"
             img-top
             tag="article"
@@ -20,7 +20,7 @@
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
-    props: ["title", "url", "image", "text"],
+    props: ["title", "url", "image", "text", "author"],
 });
 </script>
 

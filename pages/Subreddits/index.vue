@@ -51,8 +51,10 @@ export default Vue.extend({
             try {
                 console.log("log: searching for subreddits with query:" + text);
                 // TODO HIDE ENDPOINTS, LIMIT TO CONSTANT
+                // TODO FIX ICONS
+                // TODO CREATE SUBREDDIT TYPE
                 const res = await axios.get(
-                    `https://www.reddit.com/subreddits/search.json?q=${text}&limit=3&`
+                    `https://www.reddit.com/subreddits/search.json?q=${text}&limit=10&`
                 );
 
                 // console.log(res.data.data.children);
