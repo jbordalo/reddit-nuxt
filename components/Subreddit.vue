@@ -1,26 +1,32 @@
 <template>
     <div>
         <b-card
-            :title="title"
-            :img-src="icon"
-            :img-alt="title"
+            :title="subreddit.getTitle"
+            :img-src="subreddit.getIcon"
+            :img-alt="subreddit.getTitle"
             img-top
             tag="article"
             style="max-width: 20rem"
             class="mb-2"
         >
             <b-card-text>
-                {{ description }}
+                {{ subreddit.getDescription }}
             </b-card-text>
         </b-card>
     </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
-    props: ["title", "icon", "description"],
-});
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { SubredditInterface } from "../types/Subreddit";
+
+@Component
+export default class Subreddit extends Vue {
+    // props: ["title", "icon", "description"],
+
+    @Prop({ type: Object, required: true })
+    readonly subreddit!: SubredditInterface;
+}
 </script>
 
 <style scoped>

@@ -1,10 +1,10 @@
 <template>
     <div>
         <b-card
-            :title="title"
-            :footer="author"
-            :img-src="checkUrl"
-            :img-alt="title"
+            :title="post.getTitle"
+            :footer="post.getAuthor"
+            :img-src="post.checkUrl"
+            :img-alt="post.getTitle"
             img-top
             tag="article"
             style="max-width: 20rem"
@@ -12,23 +12,28 @@
         >
             <div class="scrollable">
                 <b-card-text class="mt-2">
-                    {{ text }}
+                    {{ post.getText }}
                 </b-card-text>
             </div>
-            <b-link :href="url" target="_blank">{{ getUrl }}</b-link>
+            <b-link :href="post.getUrl" target="_blank">{{
+                post.getUrl
+            }}</b-link>
         </b-card>
     </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
-    props: ["title", "url", "image", "text", "author"],
-});
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { PostInterface } from "../types/Post";
+
+@Component
+export default class Post extends Vue {
+    @Prop({ type: Object, required: true }) readonly post!: PostInterface;
+}
 </script>
 
 <style scoped>
-/* TODO separate file */
+/* TODO separate file nuxt-style-resources */
 .card {
     width: 100%;
 }
