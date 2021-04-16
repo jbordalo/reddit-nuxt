@@ -32,13 +32,15 @@ export default class Post extends Vue {
 }
 </script>
 
-<style scoped>
-/* TODO separate file nuxt-style-resources */
+<style lang="scss" scoped>
+/* TODO separate file => nuxt-style-resources */
+$text-max-height: 350px;
+
 .card {
     width: 100%;
 }
 .scrollable {
     overflow-y: auto;
-    max-height: 350px;
+    max-height: $text-max-height;
 }
 </style>

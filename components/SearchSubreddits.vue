@@ -20,20 +20,17 @@
 
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
-    data() {
-        return {
-            text: "",
-        };
-    },
-    methods: {
-        onSubmit() {
-            this.$emit("search-text", this.text);
-            this.text = "";
-        },
-    },
-});
+import { Component, Vue } from "vue-property-decorator";
+
+@Component
+export default class SearchSubreddits extends Vue {
+    text: string = "";
+
+    onSubmit() {
+        this.$emit("search-text", this.text);
+        this.text = "";
+    }
+}
 </script>
 
 <style scoped>

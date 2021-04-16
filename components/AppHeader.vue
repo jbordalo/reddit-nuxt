@@ -1,14 +1,14 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand href="#">Reddit</b-navbar-brand>
+            <b-navbar-brand href="#" to="/">Reddit</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <!-- TODO?? NUXT LINK OR ?? -->
-                    <b-nav-item to="/">Home</b-nav-item>
+                    <!-- <b-nav-item to="/">Home</b-nav-item> -->
                     <b-nav-item to="/subreddits">Subreddits</b-nav-item>
                     <b-nav-item to="/about">About</b-nav-item>
                     <!-- <nuxt-link to="/">Home</nuxt-link>
@@ -25,7 +25,7 @@ import Vue from "vue";
 export default Vue.extend({});
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* TODO MOVE TO SINGLE FILE */
 .header {
     display: flex;
@@ -34,22 +34,21 @@ export default Vue.extend({});
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px dotted #ccc;
+    ul {
+        display: flex;
+    }
+
+    a {
+        display: inline-block;
+        background: #333;
+        color: #fff;
+        padding: 0.3rem 1rem;
+        margin-right: 0.5rem;
+    }
 }
 
 .header .title {
     font-size: 3rem;
     color: #ffffff;
-}
-
-.header ul {
-    display: flex;
-}
-
-.header a {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 0.3rem 1rem;
-    margin-right: 0.5rem;
 }
 </style>

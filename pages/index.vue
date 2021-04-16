@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+// GETTING COMPONENT NAME ERROR
 export default {
     head() {
         return {

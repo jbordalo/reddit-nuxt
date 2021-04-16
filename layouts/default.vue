@@ -6,14 +6,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { Component, Vue } from "vue-property-decorator";
 import AppHeader from "../components/AppHeader.vue";
 
-export default Vue.extend({
+@Component({
     components: {
         AppHeader,
     },
-});
+})
+export default class Default extends Vue {}
 </script>
 
 <style>

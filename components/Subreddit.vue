@@ -22,8 +22,6 @@ import { SubredditInterface } from "../types/Subreddit";
 
 @Component
 export default class Subreddit extends Vue {
-    // props: ["title", "icon", "description"],
-
     @Prop({ type: Object, required: true })
     readonly subreddit!: SubredditInterface;
 }
