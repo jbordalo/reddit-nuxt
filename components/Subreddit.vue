@@ -3,7 +3,7 @@
         <b-card
             :title="title"
             :img-src="icon"
-            img-alt="Image"
+            :img-alt="title"
             img-top
             tag="article"
             style="max-width: 20rem"

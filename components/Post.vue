@@ -1,18 +1,21 @@
 <template>
     <div>
         <b-card
-            :title="author + ' wrote ' + title"
-            :img-src="url"
-            img-alt="Image"
+            :title="title"
+            :footer="author"
+            :img-src="checkUrl"
+            :img-alt="title"
             img-top
             tag="article"
             style="max-width: 20rem"
             class="mb-2"
         >
-            <b-card-text>
-                {{ text }}
-                <a :href="url" target="_blank">{{ url }}</a>
-            </b-card-text>
+            <div class="scrollable">
+                <b-card-text class="mt-2">
+                    {{ text }}
+                </b-card-text>
+            </div>
+            <b-link :href="url" target="_blank">{{ getUrl }}</b-link>
         </b-card>
     </div>
 </template>
@@ -25,4 +28,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+/* TODO separate file */
+.card {
+    width: 100%;
+}
+.scrollable {
+    overflow-y: auto;
+    max-height: 350px;
+}
 </style>

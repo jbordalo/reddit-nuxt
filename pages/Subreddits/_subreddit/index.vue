@@ -32,9 +32,8 @@ export default Vue.extend({
     async created() {
         // TODO CREATE POST TYPE
         // TODO HIDE ENDPOINT .env
+        // TODO Post and Subreddit types will implement a printable interface with required stuff?
         // TODO Pagination
-        // TODO SHOW URL BUT SHOW AS IMG IF ENDSWITH .JPG or .PNG
-        // TODO OR EXAMINE RESPONSE TO CHECK FOR IMAGE
         const res = await axios.get(
             `https://www.reddit.com/r/${this.$route.params.subreddit}/hot.json?limit=10`
         );

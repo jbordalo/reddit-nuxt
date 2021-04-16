@@ -20,7 +20,7 @@
                                 subreddit.data.community_icon.replace(
                                     'amp;',
                                     ''
-                                )
+                                ) || subreddit.data.icon_img
                             "
                             :description="subreddit.data.public_description"
                         ></subreddit>
@@ -51,7 +51,6 @@ export default Vue.extend({
             try {
                 console.log("log: searching for subreddits with query:" + text);
                 // TODO HIDE ENDPOINTS, LIMIT TO CONSTANT
-                // TODO FIX ICONS
                 // TODO CREATE SUBREDDIT TYPE
                 const res = await axios.get(
                     `https://www.reddit.com/subreddits/search.json?q=${text}&limit=10&`
