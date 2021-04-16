@@ -49,7 +49,7 @@ export default class Subreddits extends Vue {
                     .toLowerCase()}&limit=10`
             );
 
-            console.log(res.data.data.children);
+            // console.log(res.data.data.children);
 
             this.subreddits = res.data.data.children.map(
                 (sub: any) =>

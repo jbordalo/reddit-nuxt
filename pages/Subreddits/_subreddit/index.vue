@@ -14,9 +14,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import axios from "axios";
 import Post from "../../../components/Post.vue";
-import { PostInterface, PostClass } from "../../../types/Post";
+import { PostInterface } from "../../../types/Post";
+import { getModule } from "vuex-module-decorators";
+import PostsModule from "../../../store/modules/PostsModule";
 
 @Component({
     components: {
@@ -24,39 +25,33 @@ import { PostInterface, PostClass } from "../../../types/Post";
     },
 })
 export default class SubredditPosts extends Vue {
-    subreddit: string = "";
+    subreddit: string = this.$route.params.subreddit;
     posts: PostInterface[] = [];
+
+    // asyncData() {
+    //     console.log("Fetching data");
+    //     this.$store.dispatch("requestPosts", this.$route.params.subreddit);
+    //     // this.posts = this.$store.getters.getPosts;
+    //     return this.$store.getters.getPosts;
+    // }
+
     // mounted vs created
     async created() {
+        console.log("Fetching data");
+
+        const PostsModuleInstance = getModule(PostsModule, this.$store);
+
+        PostsModuleInstance.requestPosts(this.$route.params.subreddit)
+            .then(() => {
+                this.posts = PostsModuleInstance.getPosts;
+            })
+            .catch(() => console.log("Error in fetching data"));
+
         // TODO HIDE ENDPOINT .env
         // TODO Post and Subreddit types will implement a printable interface with required stuff?
         // TODO Pagination
         // TODO request into store, posts and subs
         // TODO asyncdata to set posts + getter!!
-        // error handling (with ?)
-        // test middleware
-        const res = await axios.get(
-            `https://www.reddit.com/r/${this.$route.params.subreddit}/hot.json?limit=10`
-        );
-
-        // console.log(res.data.data.children);
-
-        // TODO REFACTOR IMAGE, not thumbnail but URL, deal with it inside
-        this.posts = res.data.data.children.map((sub: any) => {
-            return new PostClass(
-                sub.data.id,
-                sub.data.title,
-                sub.data.url,
-                sub.data.thumbnail,
-                sub.data.selftext,
-                sub.data.author
-            );
-        });
-
-        // console.log(this.posts);
-        // console.log(this.posts[0]);
-
-        this.subreddit = res.data.data.children[0].data.subreddit;
     }
     head() {
         return {
