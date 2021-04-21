@@ -1,9 +1,8 @@
 <template>
-    <div class="container">
+    <div class="container mt-4">
         <b-container class="bv-example-row">
-            <b-row class="mt-3">
-                <h2>{{ "Browsing r/" + subreddit }}</h2>
-            </b-row>
+            <h3>{{ "Browsing r/" + subreddit }}</h3>
+            <hr />
             <div v-if="!loadingError">
                 <b-row
                     v-for="post in posts"
@@ -59,8 +58,6 @@ export default class SubredditPosts extends Vue {
 
     mounted() {
         this.getPosts();
-        // TODO HIDE ENDPOINT .env
-        // TODO Post and Subreddit types will implement a printable interface with required stuff?
     }
 
     beforeDestroy() {

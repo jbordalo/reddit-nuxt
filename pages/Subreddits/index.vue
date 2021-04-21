@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="container mt-4">
+        <h3>Search Subreddits</h3>
+        <hr />
         <b-container class="bv-example-row">
             <b-row class="mt-3 mb-3">
                 <search-subreddits

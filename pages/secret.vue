@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-4">
         <h3>Secret Page</h3>
+        <hr />
         <p>You've accessed the secret page.</p>
     </div>
 </template>

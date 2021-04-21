@@ -1,0 +1,10 @@
+$link-color: rgb(253, 99, 99);
+
+#link {
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
