@@ -7,13 +7,13 @@
             style="max-width: 20rem"
             class="mb-2"
         >
-            <b-card-img
+            <b-card-img-lazy
                 :src="post.checkUrl"
                 :alt="post.getTitle"
                 :class="{ blur: censored }"
                 @click="unblur"
                 onerror="this.style.display = 'none'"
-            ></b-card-img>
+            ></b-card-img-lazy>
             <div class="scrollable">
                 <b-card-text class="mt-2">
                     {{ post.getText }}

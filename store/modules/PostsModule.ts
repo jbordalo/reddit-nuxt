@@ -51,7 +51,6 @@ export default class PostsModule extends VuexModule {
 
     const res = await axios.get(url);
 
-    // TODO error handling
     let posts;
     try {
       posts = res.data.data.children.map((sub: any) => {
