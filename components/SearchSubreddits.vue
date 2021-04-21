@@ -2,16 +2,15 @@
     <div>
         <template>
             <div>
-                <b-form @submit.prevent="onSubmit">
+                <b-form>
                     <b-form-group label="Subreddit:">
                         <b-form-input
                             v-model="text"
                             placeholder="Enter subreddit"
+                            @keydown.prevent.enter
                             required
                         ></b-form-input>
                     </b-form-group>
-
-                    <b-button type="submit" variant="primary">Search</b-button>
                 </b-form>
             </div>
         </template>
@@ -20,7 +19,8 @@
 
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { Debounce } from "vue-debounce-decorator";
 
 @Component
 export default class SearchSubreddits extends Vue {
@@ -29,6 +29,12 @@ export default class SearchSubreddits extends Vue {
     onSubmit() {
         this.$emit("search-text", this.text);
         this.text = "";
+    }
+
+    @Watch("text")
+    @Debounce(250)
+    debounce() {
+        this.$emit("search-text", this.text);
     }
 }
 </script>

@@ -6,7 +6,7 @@
                     @search-text="searchSubreddits"
                 ></search-subreddits>
             </b-row>
-            <b-row>
+            <b-row v-if="!loadingError">
                 <b-col v-for="subreddit in subreddits" :key="subreddit.getId">
                     <nuxt-link
                         :to="
@@ -17,6 +17,9 @@
                         <subreddit :subreddit="subreddit"></subreddit>
                     </nuxt-link>
                 </b-col>
+            </b-row>
+            <b-row v-else>
+                <h3>Could not load subreddits :(</h3>
             </b-row>
         </b-container>
     </div>
@@ -37,19 +40,17 @@ import { SubredditInterface, SubredditClass } from "~/types/Subreddit";
 })
 export default class Subreddits extends Vue {
     subreddits: SubredditInterface[] = [];
+    loadingError: boolean = false;
 
     async searchSubreddits(text: String) {
         try {
             console.log("log: searching for subreddits with query:" + text);
             // TODO HIDE ENDPOINTS, LIMIT TO CONSTANT
-            // TODO reactive search, debounce -> no continuous search
             const res = await axios.get(
                 `https://www.reddit.com/subreddits/search.json?q=${text
                     .trim()
                     .toLowerCase()}&limit=10`
             );
-
-            // console.log(res.data.data.children);
 
             this.subreddits = res.data.data.children.map(
                 (sub: any) =>
@@ -63,9 +64,10 @@ export default class Subreddits extends Vue {
                         sub.data.public_description
                     )
             );
-            // console.log(this.subreddits);
-            // console.log(this.subreddits[0]);
+
+            this.loadingError = false;
         } catch (err) {
+            this.loadingError = true;
             console.log(err);
         }
     }
