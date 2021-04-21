@@ -30,8 +30,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
-import Subreddit from "../../components/Subreddit.vue";
-import SearchSubreddits from "../../components/SearchSubreddits.vue";
+import Subreddit from "~/components/Subreddit.vue";
+import SearchSubreddits from "~/components/SearchSubreddits.vue";
 import { SubredditInterface, SubredditClass } from "~/types/Subreddit";
 
 @Component({
@@ -60,7 +60,6 @@ export default class Subreddits extends Vue {
                         sub.data.id,
                         sub.data.title,
                         sub.data.display_name,
-                        // TODO make into function
                         sub.data.community_icon.replace("amp;", "") ||
                             sub.data.icon_img,
                         sub.data.public_description

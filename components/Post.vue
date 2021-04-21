@@ -24,8 +24,8 @@
             }}</b-link>
             <hr />
 
-            <img src="../assets/img/upvote.png" class="vote" />
-            <img src="../assets/img/downvote.png" class="vote" />
+            <img src="~/assets/img/upvote.png" class="vote" />
+            <img src="~/assets/img/downvote.png" class="vote" />
             {{ "Score: " + post.getScore }}
         </b-card>
     </div>

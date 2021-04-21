@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { SubredditInterface } from "../types/Subreddit";
+import { SubredditInterface } from "~/types/Subreddit";
 
 @Component
 export default class Subreddit extends Vue {
