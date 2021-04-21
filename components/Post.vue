@@ -47,28 +47,5 @@ export default class Post extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-/* TODO separate file => nuxt-style-resources */
-$text-max-height: 350px;
-$vote-size: 15px;
-$blur: 15px;
-
-.card {
-    width: 100%;
-}
-.scrollable {
-    overflow-y: auto;
-    max-height: $text-max-height;
-}
-
-.vote {
-    width: $vote-size;
-    height: $vote-size;
-    margin: 0px;
-}
-
-.blur {
-    filter: blur($blur);
-    -webkit-filter: blur($blur);
-}
+<style lang="scss" src="../assets/css/post.scss" scoped>
 </style>

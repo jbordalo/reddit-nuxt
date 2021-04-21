@@ -27,5 +27,5 @@ export default class Subreddit extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

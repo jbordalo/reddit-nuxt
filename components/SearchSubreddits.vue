@@ -39,5 +39,5 @@ export default class SearchSubreddits extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

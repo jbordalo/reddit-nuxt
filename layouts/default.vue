@@ -17,5 +17,5 @@ import AppHeader from "../components/AppHeader.vue";
 export default class Default extends Vue {}
 </script>
 
-<style>
+<style lang="scss">
 </style>
