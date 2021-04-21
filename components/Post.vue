@@ -3,13 +3,16 @@
         <b-card
             :title="post.getTitle"
             :footer="post.getAuthor"
-            :img-src="post.checkUrl"
-            :img-alt="post.getTitle"
-            img-top
             tag="article"
             style="max-width: 20rem"
             class="mb-2"
         >
+            <b-card-img
+                :src="post.checkUrl"
+                :alt="post.getTitle"
+                :class="{ blur: censored }"
+                @click="unblur"
+            ></b-card-img>
             <div class="scrollable">
                 <b-card-text class="mt-2">
                     {{ post.getText }}
@@ -34,6 +37,12 @@ import { PostInterface } from "../types/Post";
 @Component
 export default class Post extends Vue {
     @Prop({ type: Object, required: true }) readonly post!: PostInterface;
+    censored: boolean = this.post.nsfw;
+
+    unblur() {
+        if (!this.post.nsfw) return;
+        this.censored = !this.censored;
+    }
 }
 </script>
 
@@ -41,6 +50,7 @@ export default class Post extends Vue {
 /* TODO separate file => nuxt-style-resources */
 $text-max-height: 350px;
 $vote-size: 15px;
+$blur: 15px;
 
 .card {
     width: 100%;
@@ -54,5 +64,10 @@ $vote-size: 15px;
     width: $vote-size;
     height: $vote-size;
     margin: 0px;
+}
+
+.blur {
+    filter: blur($blur);
+    -webkit-filter: blur($blur);
 }
 </style>
