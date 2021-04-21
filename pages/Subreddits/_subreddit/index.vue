@@ -4,12 +4,20 @@
             <b-row class="mt-3">
                 <h2>{{ "Browsing r/" + subreddit }}</h2>
             </b-row>
-            <!-- if no posts =>  -->
-            <b-row v-for="post in posts" :key="post.getId" class="mt-3 mb-3">
-                <b-col cols="12">
-                    <post :post="post"></post>
-                </b-col>
-            </b-row>
+            <div v-if="!loadingError">
+                <b-row
+                    v-for="post in posts"
+                    :key="post.getId"
+                    class="mt-3 mb-3"
+                >
+                    <b-col cols="12">
+                        <post :post="post"></post>
+                    </b-col>
+                </b-row>
+            </div>
+            <div v-else>
+                <h2>We couldn't load posts :(</h2>
+            </div>
             <b-button variant="outline-primary" @click="getPosts"
                 >More Posts</b-button
             >
@@ -33,20 +41,23 @@ export default class SubredditPosts extends Vue {
     subreddit: string = this.$route.params.subreddit;
     posts: PostInterface[] = [];
     postsModuleInstance: PostsModule = getModule(PostsModule, this.$store);
+    loadingError: boolean = false;
 
     async getPosts() {
         console.log("Fetching data");
-        // const PostsModuleInstance = getModule(PostsModule, this.$store);
         this.postsModuleInstance
             .requestPosts(this.$route.params.subreddit)
             .then(() => {
+                this.loadingError = false;
                 this.posts = this.postsModuleInstance.getPosts;
             })
-            .catch(() => console.log("Error whilst fetching data"));
+            .catch(() => {
+                this.loadingError = true;
+                console.log("Error whilst fetching data");
+            });
     }
 
     mounted() {
-        // this.postsModuleInstance.requestClearPosts();
         this.getPosts();
         // TODO HIDE ENDPOINT .env
         // TODO Post and Subreddit types will implement a printable interface with required stuff?

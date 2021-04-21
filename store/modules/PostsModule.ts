@@ -15,7 +15,7 @@ export default class PostsModule extends VuexModule {
     console.log("mutation: populating posts");
 
     this.posts.push(...posts);
-    console.log(posts);
+    console.log(`posts: ${this.posts.length}`);
   }
 
   @Mutation
