@@ -12,6 +12,7 @@
                 :alt="post.getTitle"
                 :class="{ blur: censored }"
                 @click="unblur"
+                onerror="this.style.display = 'none'"
             ></b-card-img>
             <div class="scrollable">
                 <b-card-text class="mt-2">
