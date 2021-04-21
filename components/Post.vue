@@ -11,7 +11,7 @@
                 :src="post.checkUrl"
                 :alt="post.getTitle"
                 :class="{ blur: censored }"
-                @click="unblur"
+                @click.native="unblur"
                 onerror="this.style.display = 'none'"
             ></b-card-img-lazy>
             <div class="scrollable">
@@ -47,5 +47,5 @@ export default class Post extends Vue {
 }
 </script>
 
-<style lang="scss" src="../assets/css/post.scss" scoped>
+<style lang="scss" src="~/assets/css/post.scss" scoped>
 </style>

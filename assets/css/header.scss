@@ -1,24 +1,13 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px dotted #ccc;
-  ul {
-    display: flex;
-  }
-
-  a {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 0.3rem 1rem;
-    margin-right: 0.5rem;
-  }
+a {
+  color: white;
 }
 
-.header .title {
-  font-size: 3rem;
-  color: #ffffff;
+#nav-collapse {
+  a {
+    color: white;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
+        <b-navbar toggleable="lg" type="white" variant="danger">
             <b-navbar-brand href="#" to="/">Reddit</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -26,5 +26,5 @@ import Vue from "vue";
 export default Vue.extend({});
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" src="~/assets/css/header.scss" scoped>
 </style>
