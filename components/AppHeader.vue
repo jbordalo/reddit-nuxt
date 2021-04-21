@@ -11,6 +11,7 @@
                     <!-- <b-nav-item to="/">Home</b-nav-item> -->
                     <b-nav-item to="/subreddits">Subreddits</b-nav-item>
                     <b-nav-item to="/about">About</b-nav-item>
+                    <b-nav-item to="/secret">Secret</b-nav-item>
                     <!-- <nuxt-link to="/">Home</nuxt-link>
                     <nuxt-link to="/posts">Posts</nuxt-link>
                     <nuxt-link to="/about">About</nuxt-link> -->
