@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h2>Search your favourite subreddits</h2>
+    <div class="container mt-4">
+        <h3>Contacts:</h3>
     </div>
 </template>
 

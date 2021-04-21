@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container mt-4">
         <h3>Reddit API</h3>
+        <p>Search your favourite subreddits.</p>
     </div>
 </template>
 

@@ -5,6 +5,8 @@ interface PostInterface {
   image: string;
   text: string;
   author: string;
+
+  getId: string;
 }
 
 class PostClass implements PostInterface {
