@@ -1,4 +1,10 @@
-# reddit-nuxt
+# Reddit API
+
+## About the Project
+
+Project built whilst learning Nuxt.js.
+
+Allows users to search for subreddits and then browse their posts.
 
 ## Build Setup
 
