@@ -5,7 +5,7 @@ interface PostInterface {
   image: string;
   text: string;
   author: string;
-
+  score: number;
   getId: string;
 }
 
@@ -16,6 +16,8 @@ class PostClass implements PostInterface {
   image: string;
   text: string;
   author: string;
+  score: number;
+  nsfw: boolean;
 
   constructor(
     id: string,
@@ -23,7 +25,9 @@ class PostClass implements PostInterface {
     url: string,
     image: string,
     text: string,
-    author: string
+    author: string,
+    score: number,
+    nsfw: boolean
   ) {
     this.id = id;
     this.title = title;
@@ -31,6 +35,8 @@ class PostClass implements PostInterface {
     this.image = image;
     this.text = text;
     this.author = author;
+    this.score = score;
+    this.nsfw = nsfw;
   }
 
   get getId(): string {
@@ -55,6 +61,14 @@ class PostClass implements PostInterface {
 
   get getUrl(): string {
     return this.url;
+  }
+
+  get getScore(): number {
+    return this.score;
+  }
+
+  get getNSFW(): boolean {
+    return this.nsfw;
   }
 
   get checkUrl(): string {

@@ -18,6 +18,11 @@
             <b-link :href="post.getUrl" target="_blank">{{
                 post.getUrl
             }}</b-link>
+            <hr />
+
+            <img src="../assets/img/upvote.png" class="vote" />
+            <img src="../assets/img/downvote.png" class="vote" />
+            {{ "Score: " + post.getScore }}
         </b-card>
     </div>
 </template>
@@ -35,6 +40,7 @@ export default class Post extends Vue {
 <style lang="scss" scoped>
 /* TODO separate file => nuxt-style-resources */
 $text-max-height: 350px;
+$vote-size: 15px;
 
 .card {
     width: 100%;
@@ -42,5 +48,11 @@ $text-max-height: 350px;
 .scrollable {
     overflow-y: auto;
     max-height: $text-max-height;
+}
+
+.vote {
+    width: $vote-size;
+    height: $vote-size;
+    margin: 0px;
 }
 </style>

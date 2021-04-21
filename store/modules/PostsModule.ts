@@ -42,7 +42,7 @@ export default class PostsModule extends VuexModule {
     if (this.posts.length === 0) {
       id = "";
     } else {
-      id = this.posts[this.posts.length - 1].getId;
+      id = this.posts[this.posts.length - 1].id;
     }
 
     const url = `https://www.reddit.com/r/${subreddit}/hot.json?limit=10&after=t3_${id}`;
@@ -61,7 +61,9 @@ export default class PostsModule extends VuexModule {
           sub.data.url,
           sub.data.thumbnail,
           sub.data.selftext,
-          sub.data.author
+          sub.data.author,
+          sub.data.score,
+          sub.data.over_18
         );
       });
     } catch (error) {
