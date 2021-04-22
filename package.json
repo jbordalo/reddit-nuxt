@@ -23,6 +23,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
     "@nuxt/typescript-build": "^2.1.0",
+    "nuxt-property-decorator": "^2.9.1",
     "vuex-module-decorators": "^1.0.1"
   }
 }

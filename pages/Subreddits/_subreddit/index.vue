@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from "nuxt-property-decorator";
 import Post from "~/components/Post.vue";
 import { PostInterface } from "~/types/Post";
-import { Action, getModule } from "vuex-module-decorators";
+import { getModule } from "vuex-module-decorators";
 import PostsModule from "~/store/modules/PostsModule";
 
 @Component({
