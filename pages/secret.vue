@@ -8,7 +8,7 @@
 
 <script lang="ts">
 export default {
-    middleware: "auth",
+    middleware: "authMiddleware",
 
     head() {
         return {
