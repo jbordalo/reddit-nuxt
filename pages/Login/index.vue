@@ -36,19 +36,37 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "nuxt-property-decorator";
+import { Component, Vue } from "nuxt-property-decorator";
 
 type LoginForm = {
     email: string;
     password: string;
 };
 
-export default class AppLogin extends Vue {
+@Component({ name: "Login" })
+export default class Login extends Vue {
     form: LoginForm = { email: "", password: "" };
+    error: string = "";
 
-    onSubmit() {
+    async onSubmit() {
         const formData = JSON.stringify(this.form);
         console.log(formData);
+        try {
+            await this.$auth.loginWith("local", {
+                data: {
+                    email: this.form.email,
+                    password: this.form.password,
+                },
+            });
+
+            console.log(this.$auth.loggedIn);
+            console.log(this.$store.state.auth.loggedIn);
+
+            // this.$router.push("/");
+        } catch (e) {
+            this.error = e.response.data.message;
+            alert(this.error);
+        }
     }
 
     head() {

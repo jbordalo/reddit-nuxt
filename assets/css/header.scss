@@ -1,3 +1,5 @@
+$status-size: 15px;
+
 a {
   color: white;
 }
@@ -5,9 +7,25 @@ a {
 #nav-collapse {
   a {
     color: white;
+    text-decoration: none;
 
     &:hover {
       font-weight: bold;
     }
   }
+}
+
+#loginStatus {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: $status-size;
+  height: $status-size;
+}
+
+.greenStatus {
+  background-color: green;
+}
+
+.redStatus {
+  backface-visibility: red;
 }

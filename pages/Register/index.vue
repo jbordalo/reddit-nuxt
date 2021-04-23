@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "nuxt-property-decorator";
+import { Component, Vue } from "nuxt-property-decorator";
 // import axios from "axios";
 
 type RegisterForm = {
@@ -60,29 +60,41 @@ type RegisterForm = {
     password: string;
 };
 
-export default class RegisterPage extends Vue {
+@Component({ name: "Register" })
+export default class Register extends Vue {
     form: RegisterForm = { email: "", username: "", password: "" };
+    error: string = "";
 
     async onSubmit() {
         const formData = JSON.stringify(this.form);
         console.log(formData);
         try {
-            // await this.$axios.post("register", {
-            //     username: this.form.username,
-            //     email: this.form.email,
-            //     password: this.form.password,
-            // });
+            const registerResponse = await this.$axios.post("register", {
+                username: this.form.username,
+                email: this.form.email,
+                password: this.form.password,
+            });
 
-            // await this.$auth.loginWith("local", {
-            //     data: {
-            //         email: this.form.email,
-            //         password: this.form.password,
-            //     },
-            // });
+            console.log("Register response: ");
+            console.log(registerResponse);
+
+            const loginResponse = await this.$auth.loginWith("local", {
+                data: {
+                    email: this.form.email,
+                    password: this.form.password,
+                },
+            });
+
+            console.log("Log in response: ");
+            console.log(loginResponse);
+
+            console.log(this.$auth.loggedIn);
+            console.log(this.$auth.user);
 
             this.$router.push("/");
-        } catch (err) {
-            console.log(err);
+        } catch (e) {
+            this.error = e.response.data.message;
+            alert(this.error);
         }
     }
     onReset() {
