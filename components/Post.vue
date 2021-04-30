@@ -8,7 +8,7 @@
             class="mb-2"
         >
             <b-card-img-lazy
-                :src="post.checkUrl"
+                :src="post.getImage"
                 :alt="post.getTitle"
                 :class="{ blur: censored }"
                 @click.native="unblur"

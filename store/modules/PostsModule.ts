@@ -58,7 +58,6 @@ export default class PostsModule extends VuexModule {
           sub.data.id,
           sub.data.title,
           sub.data.url,
-          sub.data.thumbnail,
           sub.data.selftext,
           sub.data.author,
           sub.data.score,
