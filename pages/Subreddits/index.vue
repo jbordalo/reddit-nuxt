@@ -54,6 +54,12 @@ export default class Subreddits extends Vue {
                     .toLowerCase()}&limit=10`
             );
 
+            if (res.data.data.children.length === 0) {
+                console.log("log: loading error");
+                this.loadingError = true;
+                return;
+            }
+
             this.subreddits = res.data.data.children.map(
                 (sub: any) =>
                     new SubredditClass(
@@ -69,6 +75,7 @@ export default class Subreddits extends Vue {
             this.loadingError = false;
         } catch (err) {
             this.loadingError = true;
+            console.log("log: loading error");
             console.log(err);
         }
     }
