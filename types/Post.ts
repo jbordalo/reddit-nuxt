@@ -6,7 +6,7 @@ interface PostInterface {
   text: string;
   author: string;
   score: number;
-  getId: string;
+  nsfw: boolean;
 }
 
 class PostClass implements PostInterface {
@@ -72,7 +72,9 @@ class PostClass implements PostInterface {
   }
 
   get checkUrl(): string {
-    return this.url.endsWith(".jpg") || this.url.endsWith(".png")
+    return this.url.endsWith(".jpg") ||
+      this.url.endsWith(".png") ||
+      this.url.endsWith(".jpeg")
       ? this.url
       : "";
   }

@@ -1,5 +1,6 @@
 <template>
     <div class="container mt-4">
+        <b-alert v-model="error" variant="danger">Invalid credentials!</b-alert>
         <b-form @submit.prevent="onSubmit" @reset.prevent="onReset">
             <b-form-group
                 id="input-group-1"
@@ -44,6 +45,17 @@
                 ></b-form-input>
             </b-form-group>
 
+            <b-form-group id="input-group-4" label="Age:" label-for="input-4">
+                <b-form-input
+                    id="input-4"
+                    type="number"
+                    v-model="form.age"
+                    placeholder="18"
+                    min="18"
+                    required
+                ></b-form-input>
+            </b-form-group>
+
             <b-button type="submit" variant="primary">Register</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
@@ -52,49 +64,39 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-// import axios from "axios";
 
 type RegisterForm = {
     email: string;
     username: string;
     password: string;
+    age: number;
 };
 
 @Component({ name: "Register" })
 export default class Register extends Vue {
-    form: RegisterForm = { email: "", username: "", password: "" };
-    error: string = "";
+    form: RegisterForm = { email: "", username: "", password: "", age: 18 };
+    error: boolean = false;
+
+    computeDate(event: any) {
+        console.log(event);
+    }
 
     async onSubmit() {
-        const formData = JSON.stringify(this.form);
-        console.log(formData);
         try {
-            const registerResponse = await this.$axios.post("register", {
-                username: this.form.username,
+            const registerResponse = await this.$axios.post("users", {
+                name: this.form.username,
                 email: this.form.email,
                 password: this.form.password,
+                age: this.form.age,
             });
 
             console.log("Register response: ");
             console.log(registerResponse);
 
-            const loginResponse = await this.$auth.loginWith("local", {
-                data: {
-                    email: this.form.email,
-                    password: this.form.password,
-                },
-            });
-
-            console.log("Log in response: ");
-            console.log(loginResponse);
-
-            console.log(this.$auth.loggedIn);
-            console.log(this.$auth.user);
-
-            this.$router.push("/");
+            this.$router.push("/login");
         } catch (e) {
-            this.error = e.response.data.message;
-            alert(this.error);
+            alert(e.response.data.message);
+            this.error = true;
         }
     }
     onReset() {
@@ -102,6 +104,7 @@ export default class Register extends Vue {
         this.form.email = "";
         this.form.username = "";
         this.form.password = "";
+        this.form.age = 18;
     }
 
     head() {

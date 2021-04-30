@@ -43,16 +43,25 @@ export default {
     '@nuxtjs/auth-next'
   ],
   axios: {
-    baseURL: 'http://127.0.0.1:3333/api'
+    baseURL: 'http://127.0.0.1:3333/'
   },
 
   auth: {
     strategies: {
       local: {
+        token: {
+          property: 'data.token',
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: false,
+          autoFetch: false,
+        },
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.token' },
-          user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
+          login: { url: '/users/login', method: 'post' },
+          logout: { url: '/users/logout', method: 'post' },
+          user: { url: '/users/me', method: 'get' }
         }
       }
     }

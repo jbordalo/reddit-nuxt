@@ -10,8 +10,8 @@
                     <!-- TODO?? NUXT LINK OR ?? -->
                     <!-- <b-nav-item to="/">Home</b-nav-item> -->
                     <b-nav-item to="/subreddits">Subreddits</b-nav-item>
+                    <b-nav-item to="/profile">Profile</b-nav-item>
                     <b-nav-item to="/about">About</b-nav-item>
-                    <b-nav-item to="/secret">Secret</b-nav-item>
                     <!-- <nuxt-link to="/">Home</nuxt-link>
                     <nuxt-link to="/posts">Posts</nuxt-link>
                     <nuxt-link to="/about">About</nuxt-link> -->
@@ -20,18 +20,18 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item
                         id="loginStatus"
+                        class="mt-2"
                         :class="{
                             greenStatus: $auth.loggedIn,
                             redStatus: !$auth.loggedIn,
                         }"
                     >
-                        <!-- {{ $auth.loggedIn }} -->
                     </b-nav-item>
                     <b-nav-item-dropdown right>
                         <!-- Using 'button-content' slot -->
                         <template #button-content>
                             <a href="#">{{
-                                $auth.loggedIn ? $auth.user : "User"
+                                $auth.loggedIn ? $auth.user.name : "User"
                             }}</a>
                         </template>
 
