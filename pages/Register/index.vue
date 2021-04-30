@@ -41,6 +41,7 @@
                     type="password"
                     v-model="form.password"
                     placeholder="Enter password"
+                    minlength="7"
                     required
                 ></b-form-input>
             </b-form-group>
