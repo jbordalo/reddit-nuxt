@@ -15,7 +15,6 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item
                         id="loginStatusBtn"
-                        class="mt-2"
                         :class="{
                             'loginStatusBtn--green': $auth.loggedIn,
                             'loginStatusBtn--red': !$auth.loggedIn,
