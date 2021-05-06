@@ -7,23 +7,18 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <!-- TODO?? NUXT LINK OR ?? -->
-                    <!-- <b-nav-item to="/">Home</b-nav-item> -->
                     <b-nav-item to="/subreddits">Subreddits</b-nav-item>
                     <b-nav-item to="/profile">Profile</b-nav-item>
                     <b-nav-item to="/about">About</b-nav-item>
-                    <!-- <nuxt-link to="/">Home</nuxt-link>
-                    <nuxt-link to="/posts">Posts</nuxt-link>
-                    <nuxt-link to="/about">About</nuxt-link> -->
                 </b-navbar-nav>
 
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item
-                        id="loginStatus"
+                        id="loginStatusBtn"
                         class="mt-2"
                         :class="{
-                            greenStatus: $auth.loggedIn,
-                            redStatus: !$auth.loggedIn,
+                            'loginStatusBtn--green': $auth.loggedIn,
+                            'loginStatusBtn--red': !$auth.loggedIn,
                         }"
                     >
                     </b-nav-item>

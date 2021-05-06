@@ -5,16 +5,16 @@
             :footer="post.getAuthor"
             tag="article"
             style="max-width: 20rem"
-            class="mb-2"
+            class="card mb-2"
         >
             <b-card-img-lazy
                 :src="post.getImage"
                 :alt="post.getTitle"
-                :class="{ blur: censored }"
+                :class="{ 'card--blur': censored }"
                 @click.native="unblur"
                 onerror="this.style.display = 'none'"
             ></b-card-img-lazy>
-            <div class="scrollable">
+            <div class="card--scrollable">
                 <b-card-text class="mt-2">
                     {{ post.getText }}
                 </b-card-text>
@@ -24,8 +24,8 @@
             }}</b-link>
             <hr />
 
-            <img src="~/assets/img/upvote.png" class="vote" />
-            <img src="~/assets/img/downvote.png" class="vote" />
+            <img src="~/assets/img/upvote.png" class="card__vote" />
+            <img src="~/assets/img/downvote.png" class="card__vote" />
             {{ "Score: " + post.getScore }}
         </b-card>
     </div>

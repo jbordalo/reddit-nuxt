@@ -3,20 +3,21 @@ $vote-size: 15px;
 $blur: 15px;
 
 .card {
-  width: 100%;
-}
-.scrollable {
-  overflow-y: auto;
-  max-height: $text-max-height;
+  font-family: cursive, verdana, arial, helvetica, sans-serif;
 }
 
-.vote {
+.card__vote {
   width: $vote-size;
   height: $vote-size;
   margin: 0px;
 }
 
-.blur {
+.card--scrollable {
+  overflow-y: auto;
+  max-height: $text-max-height;
+}
+
+.card--blur {
   filter: blur($blur);
   -webkit-filter: blur($blur);
 }

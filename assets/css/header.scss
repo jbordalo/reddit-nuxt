@@ -15,17 +15,17 @@ a {
   }
 }
 
-#loginStatus {
+#loginStatusBtn {
   border: 2px solid black;
   border-radius: 50%;
   width: $status-size;
   height: $status-size;
 }
 
-.greenStatus {
+.loginStatusBtn--green {
   background-color: green;
 }
 
-.redStatus {
+.loginStatusBtn--red {
   backface-visibility: red;
 }
